@@ -3,6 +3,7 @@ require("express-async-errors");
 
 const express = require("express");
 const cors = require("cors");
+const helmet = require("helmet");
 
 const errorHandlerMiddleware = require("./middlewares/error-handler");
 const notFoundMiddleware = require("./middlewares/error-handler");
