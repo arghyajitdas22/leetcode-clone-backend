@@ -12,6 +12,7 @@ const connectDB = require("./db/connect");
 
 const authRouter = require("./routes/auth");
 const questionRouer = require("./routes/questions");
+const userRouter = require("./routes/user");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -25,6 +26,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/questions", auththenticationMiddleware, questionRouer);
+app.use("/api/v1/user", auththenticationMiddleware, userRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);

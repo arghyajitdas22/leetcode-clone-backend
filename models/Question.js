@@ -22,11 +22,11 @@ const QuestionSchema = new mongoose.Schema(
       type: String,
       required: [true, "Please elaborate the question"],
     },
-    status: {
-      type: String,
-      enum: ["accepted", "attempted", "unattempted"],
-      default: "unattempted",
-    },
+    // status: {
+    //   type: String,
+    //   enum: ["accepted", "attempted", "unattempted"],
+    //   default: "unattempted",
+    // },
     solutionUrl: {
       type: String,
     },

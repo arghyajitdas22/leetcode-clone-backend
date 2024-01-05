@@ -27,6 +27,14 @@ const UserSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  attempted: {
+    type: [mongoose.Types.ObjectId],
+    default: [],
+  },
+  solved: {
+    type: [mongoose.Types.ObjectId],
+    default: [],
+  },
 });
 
 UserSchema.pre("save", async function () {

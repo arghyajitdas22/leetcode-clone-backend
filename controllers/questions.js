@@ -9,14 +9,42 @@ const { StatusCodes } = require("http-status-codes");
 
 const getAllQuestions = async (req, res) => {
   const questions = await Question.find({}).sort("createdAt");
+  const userId = req.user.userId;
 
-  res.status(StatusCodes.OK).json({ questions, count: questions.length });
+  const user = await User.findOne({ _id: userId });
+
+  if (!user) {
+    throw new NotFoundError("User does not exist");
+  }
+
+  const attempted = user.attempted;
+  const solved = user.solved;
+
+  res.status(StatusCodes.OK).json({
+    questions,
+    count: questions.length,
+    userId: req.user.userId,
+    attempted,
+    solved,
+  });
 };
 
 const getQuestion = async (req, res) => {
   const question = await Question.findOne({ _id: req.params.id });
+  const userId = req.user.userId;
 
-  res.status(StatusCodes.OK).json({ question });
+  const user = await User.findOne({ _id: userId });
+
+  if (!user) {
+    throw new NotFoundError("User does not exist");
+  }
+
+  const attempted = user.attempted;
+  const solved = user.solved;
+
+  res
+    .status(StatusCodes.OK)
+    .json({ question, userId: req.user.userId, attempted, solved });
 };
 
 const createQuestion = async (req, res) => {
