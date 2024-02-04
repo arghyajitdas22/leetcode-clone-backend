@@ -22,7 +22,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("I will make leetcode backend on my own");
+  res.send("Leetcode clone");
 });
 
 app.use("/api/v1/auth", authRouter);

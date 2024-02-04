@@ -42,10 +42,10 @@ const checkUserSession = async (req, res) => {
 
   jwt.verify(token, process.env.JWT_SECRET, function (err, decoded) {
     if (err) {
-      console.log(0);
+      // console.log(0);
       msg = "token expired";
     } else {
-      console.log(1);
+      // console.log(1);
       msg = "token active";
     }
   });
